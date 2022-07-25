@@ -49,7 +49,7 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: ${{ github.event.inputs.version }}
-          prerelease: true
-          draft: true
+          prerelease: ${{ github.event.inputs.pre_release }}
+          draft: ${{ github.event.inputs.draft }}
           files: |
             releasefolder/**.txt
