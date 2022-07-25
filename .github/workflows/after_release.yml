@@ -19,8 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
     
-#      - name: Print version
-#        run: git describe --abbrev=0 --tags
+      - name: Print github ref
+        run: echo $env:GITHUB_REF
+    
+      - name: manual version
+        run: echo ${{ github.event.inputs.version }}
     
       - uses: cardinalby/git-get-release-action@v1
         id: getrealease
@@ -30,4 +33,4 @@ jobs:
           tag: '0.1' 
           
       - name: Print content
-        run: echo {{ steps.getrealease.outputs.assets }}
+        run: echo ${{ steps.getrealease.outputs.assets }}
