@@ -34,3 +34,9 @@ jobs:
           
       - name: Print content
         run: echo ${{ steps.getrealease.outputs.assets }}
+
+      - uses: apexskier/github-release-commenter@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          comment-template: |
+            Release {release_link} addresses this.
